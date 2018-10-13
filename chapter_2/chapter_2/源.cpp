@@ -172,3 +172,32 @@ template <typename T >voidd increase(Vectoe<T> & V)//统一递增想想中的各元素
 {
 	V.traverse(Increase<T>());//yi Increse<T>()为基本操作进行遍历
 }
+//================================
+//有序性甄别
+//================================
+
+template <typename T >int  Vector <T>::disordered() const//返回向量中逆序相邻严肃对的总数
+{
+	int n = 0;//计数器
+	for (int i = 1; i < _size; i++)//逐一检查_size -1对相邻元素；
+	{
+		if (_elem[i - 1] > _elem[i])//逆序则计数
+			n++;
+	}
+	return n;
+}
+//================================
+//唯一化
+//================================
+//低效率版，时间复杂度大
+
+template <typename T> int Vector <T>::uniquify()
+{
+	int oldSize = _size; int i = 1;//当前比对元素的指，起始于首元素
+	while (i < _size)//从前向后逐一比对各元素相邻元素
+	{
+		_elem[i - 1] = _elem[i] ? remove(i) : i++;//若雷同，则删除后者，否则，转置后一元素
+
+	}
+	return oldSize - _size;//返回删除相同的元素的总数
+}
