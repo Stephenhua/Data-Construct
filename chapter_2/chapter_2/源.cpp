@@ -189,7 +189,7 @@ template <typename T >int  Vector <T>::disordered() const//·µ»ØÏòÁ¿ÖĞÄæĞòÏàÁÚÑÏË
 //================================
 //Î¨Ò»»¯
 //================================
-//µÍĞ§ÂÊ°æ£¬Ê±¼ä¸´ÔÓ¶È´ó
+//µÍĞ§ÂÊ°æ£¬Ê±¼ä¸´ÔÓ¶È´ó£¬Êµ¼Ê²ÉÓÃµÄµü´ú·¨½øĞĞ²Ù×÷
 
 template <typename T> int Vector <T>::uniquify()
 {
@@ -201,3 +201,169 @@ template <typename T> int Vector <T>::uniquify()
 	}
 	return oldSize - _size;//·µ»ØÉ¾³ıÏàÍ¬µÄÔªËØµÄ×ÜÊı
 }
+
+//¸ßĞ§µÄµü´ú
+template <typename T> int Vector <T>::uniquify()//ÓĞĞòÏòÁ¿ÖØ¸´ÔªËØÌŞ³ıËã·¨
+{
+	Rank i = 0, j = 0;//¸÷¶Ô»¥Òì¡°ÏàÁÚ¡±ÔªËØµÄÖÈ
+	while (++J < _size)//ÖğÒ»É¨Ãè£¬Ö±ÖÁÄ©ÔªËØ
+	{
+		if (_elem[i] != _elem[j])//Ìø¹ıÀ×Í¬Õß
+			_elem[++i] = _elem[j];
+
+	}
+	_size = ++i;
+	shrink();//Ö±½ÓÉ¾³ıÎ²²¿´Ó¶àÓàÔªËØ
+	return j - i;//ÏòÁ¿¹æÄ£±ä»¯Á¿£¬¼´±»É¾³ıµÄ×ÜÊı
+}
+
+//================================
+//²éÕÒ
+//================================
+
+template <typename T>//ÔÚÓĞĞòÏòÁ¿µÄÇø¼ä[lo,hi)ÄÚ£¬È·¶¨²»´óÓÚeµÄ×îºó¾ÍÒ»¸ö½ÚµãµÄÖÈ
+Rank Vector <T>::search(T const & e, Rank lo, Rank hi)const
+{
+	return (rand() % 2) ? binSearch(_elem, e, lo, hi) : fibSearch(_elem, e, lo, hi);//°´ÕÕ50%µÄ¸ÅÂÊËæ»úÊıÊ¹ÓÃ¶ş·Ö²éÕÒ»òÕßFibonacci²éÕÒ
+
+}
+
+template <typename T > static Rank binSeatch(T* A, T const& e, Rank lo, Rnak hi)//¶ş²æÊ÷½øĞĞ²éÕÒ
+{
+	while (lo < hi)//Ã¿Ò»´Îµü´úĞèÒª½øĞĞÁ½´Î±È½ÌÅĞ¶Ï£¬ÓĞÈı¸ö·ÖÖ§
+	{
+		Rank mi = (lo + hi) >> 1;//ÒÔÖĞĞÄÎªÖáÏß
+		if (e < A[mi]) hi = mi;//ÉîÈëÇ°°ë¶Î¡¾lo,mi¡¿¼ÌĞø²éÕÒ
+		else if (A[mi] < e) lo = mi + 1;//ÉîÈëºó°ë¶Î¼ÌĞø½øĞĞ²éÕÒ
+		else return mi;//ÔÚMi´¦ÃüÖĞ
+	}
+	return -1;//Èç¹û²éÕÒÊ§°Ü£¬¼òµ¥µÄ·µ»Ø-1µ«ÊÇ²»ÄÜÖ®´¦Ê§°ÜµÄÎ»ÖÃ
+}
+
+# include <iostream>
+using namespace std;
+
+int binSearch(int *A, int e, int lo, int hi)
+{
+	int mi;
+	while (lo < hi)
+	{
+		mi = (lo + hi) / 2;
+		if (e < A[mi])
+			hi = mi;
+		else if (e>A[mi])
+			lo = mi + 1;
+		else
+			return mi;
+	}
+	return -1;
+}
+
+int main()
+{
+	int a[100];
+	for (int i = 0; i < 100; i++)
+	{
+		a[i] = i+1;
+	}
+	cout << binSearch(a, 101, 0, 100) << endl;
+	cout << binSearch(a, 48, 0, 100) << endl;
+	system("pause");
+	return 0;
+
+}
+
+
+# include "..\fibonnacci\Fib.h"//ÒıÈëFibÊıÁĞ
+template <typename T> static Rank fibSearch(T *A, T const & e, Rank lo, Rank hi)
+{
+	Fib fib(hi - lo);//´´½¨Ò»¸öfibÊıÁĞ¡£
+	while (lo < hi)//Ã¿Ò»²½µü´úÒª×öÁ½´Î±È½ÏÅĞ¶Ï
+	{
+		while (hi - lo < fib.get()) fib.prev();//Í¬ÏòÇ°Ë³Ğò²éÕÒ--ÖÁ¶àµü´ú¼¸´Î
+		Rank m1 = lo + fib.get() - 1;//È·¶¨ÈçFib(k)-1µÄÖáµã
+		if (e < A[mi]) hi = mi;//ÉîÈëÇ°°ë¶Î¼ÌĞø½øĞĞ²éÕÒ
+		else if (A[mi] < e) lo = mi + 1;//ÉîÈëºó°ë¶Î¼ÌĞø½øĞĞ²éÕÒ
+		else  return mi;
+	}
+	return -1;
+
+}
+
+class Fib//fibonacciÊıÁĞÀà
+{
+private:
+	int f, g;//f=fib(k-1),g=gib(k),¾ùÎªintĞÍ£¬ÈİÒ×ÊıÖµ»áÒç³ö
+public:
+	Fib(int n)//³õÊ¼»¯²»Ğ¡ÓÚnµÄ×îĞ¡fibonacciÏî
+	{
+		f = 1;
+		g = 0;
+		while (g < n)
+		{
+			next();
+		}
+	}
+	int get(){ return g; }//»ñÈ¡µ±Ç°FiberonnacciÏî
+	int next(){ g += f; f = g - f; return g; }//×ªÖÁÏÂÒ»fibbonacciÏî
+	int prev(){ f = g - f; g -= f; return g; }//×ªÖÁÉÏÒ»fibbonacciÏî
+};
+//================================
+//¶ş·Ö·¨²éÕÒËã·¨
+//================================
+
+template  <typename T > static Rank binSearch(T *A, T const & e, Rank lo, Rank hi)
+{
+	while (1 < hi - lo)
+	{
+		Rank mi = (lo + hi) >> 1;//ÒÔÖĞµãÎªÖáµã
+		(e < A[mi]) ? hi = mi : lo = mi;//¾­¹ı±È½Ïºó£¬È·¶¨ÉîÈë[lo,mi]»òÕß[mi,hi]
+	}
+	return (e == A[lo]) ? lo : -1;
+}
+
+template  <typename T > static Rank binSearch(T *A, T const & e, Rank lo, Rank hi)
+{
+	while (lo < hi)//Ã¿Ò»²½µü´ú½öĞè×öÒ»´Î±È½ÏÅĞ¶Ï£¬ÓĞÁ½¸ö·ÖÖ§
+	{
+		Rank mi = (lo + hi) >> 1;//ÒÔÖĞĞÄÎªÖĞµã
+		(e < A[mi]) ? hi = mi : lo = mi + 1;//¾­¹ı±È½ÏÖ®ºóÈ·¶¨ÉîÈë¡¾lo,mi£©»òÕß(mi,hi]
+	}
+	return --lo;//Ñ­»·½áÊøÊ±£¬lo´óÓÚeµÄÔªËØµÄ×îĞ¡ÖÈ£¬¹Êlo-1¼´²»´óÓÚeµÄÔªËØµÄ×î´óÖÈ£¬
+	//ÓĞ¶à¸öÃüÖĞÔªËØÊ±£¬×ÜÄÜ±£Ö¤·µ»ØÖ¸µÄ×î´óÕß£¬²éÕÒÊ§°ÜÊ±£¬ÄÜ¹»·µ»ØÊ§°ÜµÄÎ»ÖÃ
+}
+
+//================================
+//ÏòÁ¿ÅÅĞòÆ÷½Ó¿Ú
+//================================
+template <typename T> void  Vector <T>::sort(Rank lo, Rank hi)//ÏòÁ¿Çø¼ä¡¾lo,hi¡¿ÅÅĞò£¬Ëæ»úÑ¡È¡ÅÅĞòËã·¨£¬
+{
+	stitch(rand() % 5)
+	{
+		case 1:bubbleSort(lo, si); break;//ÆğÅİÅÅĞò
+		case 2:selectSort(lo, hi); break;//Ñ¡ÔñÅÅĞò
+		case 3:mergeSort(lo, hi); break;//¹é²¢ÅÅĞò
+		case 4:heapSort(lo, hi); break;//¶ÑÅÅĞò
+		case 5:quickSort(lo, hi); break;//¿ìËÙÅÅĞò
+	}
+}
+
+//ÆğÅİÅÅĞòËã·¨
+void bubllesortA(int A[], int n)
+{
+	bool sorted = false;//ÕûÌå½øĞĞÅÅĞò£¬Ê×ÏÈ¼Ù¶¨ÉĞÎ´ÅÅĞò
+	while (!sorted)//ÔçÉĞÎ´È·ÈÏÒÑÈ«¾ÖÅÅĞòÖ®Ç°£¬ÖğÌË½øĞĞÉ¨Ãè½»»»
+	{
+		sorted = true;//¼Ù¶¨ÒÑ¾­ÅÅĞò
+		for (int i = 1; i < n; i++)//×Ô×óÏòÓÒÖğ¶Ô¼ì²éµ±Ç°·¶Î§A[0,n]ÄÚµÄ¸öÏàÁÚÔªËØ
+		{
+			if (A[i - 1] > A[i])//Èç¹ûA[i-1]ºÍA[i]ÄæĞò£¬Ôò½øĞĞ½»»»£»ÒòÎªÕûÌåÅÅĞò²»ÄÜ±£Ö¤£¬ĞèÒªÇå³ıÅÅĞò±êÖ¾·ûsorted
+			{
+				swap(A[i - 1] > A[i]);
+				sorted = false;
+
+			}
+		}
+		n--;//ÄªÔªËØ±ØÈ»¾ÍÎ»£¬¿ÉÒÔËõ¶ÌÅÅĞòĞòÁĞµÄÓĞĞ§³¤¶È
+	}
+}//½èÖúboolÀàĞÍ£¬¿ÉÒÔ¼°Ê±ÌáÇ°ÍË³ö£¬¿ÉÒÔ±ÜÃâ×ön-1ÌË½»»»
