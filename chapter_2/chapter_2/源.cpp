@@ -1,4 +1,4 @@
-
+/*
 //-----------------------------------
 //基于复制的构造方法
 //-----------------------------------
@@ -367,3 +367,261 @@ void bubllesortA(int A[], int n)
 		n--;//莫元素必然就位，可以缩短排序序列的有效长度
 	}
 }//借助bool类型，可以及时提前退出，可以避免做n-1趟交换
+//================================
+//基于遍历实现向量的decrease（）功能
+//================================
+template <typename T > struct Decrease//函数对象：递减一个T类对象
+{
+	virtual void operator ()(T &e)//假设T可以直接递减或者已重载--
+	{
+		e--;
+	}
+};
+
+template <typename T> void decrease(Vector <T>& V)//统一递减向量向量的元素
+{
+	V.traverse(Decrease<T>());//与Decrease《t》()为基本操作进行遍历
+}
+
+//================================
+//基于遍历实现向量的double（）功能
+//================================
+template <typename T>struct Double//函数对象：倍增一个T类对象
+{
+	virtual void operator ()(T &e)//假设T可以直接进行倍增
+	{
+		e *= 2;
+	}
+};
+
+template <typename T> void double(Vector<T> &V)//统一加倍向量中的各元素
+{
+	V.traverse(Double <T>());//以Double《T》为基本操作进行遍历
+}
+//================================
+//二维向量的查找
+//================================
+saddleback(int A[n][], x)
+{
+	int i = 0;//不变性：有效查找范围始终为左上角的子矩阵
+	int j = binSearch(A[0][], x);//借助二分查找，在O(logn)时间内，从A的第0行找到不大于x的最大者
+	while (i < n&&-1 < j)//反复根据A[i][j]与x的比较结果，不断收缩查找范围A[i,n)【0，就）
+	{
+		if (A[i][j] < x)//矩形区域的底边向上移动
+			i++;
+		else if (x < A[i][j])//矩形区域的右边左移
+			j--;
+		else//
+		{
+			report(A[i][j])//报告房钱命中的元素，矩形区域的底边上移，右边左移
+			i++;
+			j--;
+		}
+	}
+}
+
+package niuke;
+
+public class Finder
+{
+	public int[] findElement(int[][] mat, int n, int m, int x)
+	{
+		if (mat == null || n == 0 || m == 0)
+			return null;
+		int[] ret = new int[2];
+		int row = 0, column = m - 1;
+		while (row < n&&column >= 0)
+		{
+			if (mat[row][column] == x)
+			{
+				ret[0] = row;
+				ret[1] = column;
+				return ret;
+			}
+			else if (mat[row][column]>x)
+			{
+				--column;
+			}
+			else
+				++row;
+		}
+		return null;
+	}
+	public static void main(String[] args)
+	{
+		int[][] mat = { { 1, 2, 8, 9 }, { 2, 4, 9, 12 }, { 4, 5, 6, 10 }, { 6, 8, 11, 15 } };
+		Finder fi = new Finder();
+		int[] ret = fi.findElement(mat, 4, 4, 7);
+		system.out.println(Arrays.toString(ret));
+	 
+	 
+	}
+}
+
+# include <iostream>
+using namespace std;
+int arr[7] = { 2, 3, 1, 0, 2, 5, 3 };
+void swap(int &a, int &b)
+{
+	int temp;
+	temp = a;
+	a = b;
+	b = temp;
+}
+bool duplicate(int array[], int length, int *duplication)
+{
+	if (array == NULL || length<0)
+	{
+		return false;
+	}
+	for (int i = 0; i < length; i++)
+	{
+		if (array[i]<0 || array[i]>length - 1)
+		{
+			return false;
+		}
+	}
+	for (int i = 0; i < length; ++i)
+	{
+		while (array[i]!=i)
+		{
+			if (array[i] == array[array[i]])
+			{
+				*duplication = array[i];
+				return true;
+			}
+			swap(array[i], array[array[i]]);
+		}
+	}
+	return false;
+}
+int main()
+{
+	int result;
+	bool res;
+	res = duplicate(arr, 7, &result);
+	if (res)
+		cout << "重复的数是： " << result << endl;
+	else
+		cout << "数据里面没有重复的数" << endl;
+	system("pause");
+	return 0;
+}
+
+//================================
+//归并排序
+//================================
+template <typename T >//向量归并排序
+void Vector <T>::mergeSort::mergeSort(Rank lo, Rank hi)
+{
+	if (hi - lo < 2)return;//单元素期间自然有序
+	int mi = (lo + hi) / 2;//以中点为界
+	mergeSort(lo, mi);//第一个序列进行排序
+	mergeSort(mi, hi);//第二个序列进行排序
+	merge(lo, mi, hi);//归并
+}
+
+template <typename T >//有序向量归并
+void Vector<T>::merge(Rank lo, Rank mi, Rank hi)//各自有序子向量[lo,mi）和【密，hi）
+{
+	T *A = _elem + lo;//合并之后的向量A
+	int lo = mi - lo;//前子向量B[0，lb]=_elem[lo,mi)
+	T* B = new T[lb];//
+	for (Rank i = 0; i < lb; B[i] = A[i++])//复制前子向量
+		int lc = hi - mi;
+	T*C = _elem + mi;//后子向量C[0,lc)=_elem[mi,hi)
+	for (Rank i = 0, j = 0, k = 0; (j < lb) || (k < lc))//B[j]he C[j]中的小着续至A末尾
+	{
+		if ((j < lb) && (!(k < lc) || (B[j] <= C[k])))//
+			A[i++] = B[j++];
+		if ((k < lc) && (!(j < lb) || (c[k] < B[j])))//
+			A[i++] = C[j++];
+	}
+	delete[]B;//释放空间B
+}
+*/
+
+# include <iostream>
+# include <vector>
+# include<algorithm>
+
+using namespace std;
+
+void merge(vector <int >& nums, int l1, int r1,int l2, int r2)
+{
+	int i = l1;//左半部分起始位置
+	int j = l2;//右半部分起始位置
+	int n = (r1 - l1 + 1) + (r2 - l2 + 1);//要合并元素的数量
+	vector<int> temp(n);//辅助数组
+	int k = 0;//辅助元素的起始位置
+	while (i <= r1&&j <= r2)//挑选两部分最小的一个复制到辅助数组中
+	{
+		if (nums[i] < nums[j])
+		{
+			temp[k++] = nums[i++];
+		}
+		else
+		{
+			temp[k++] = nums[j++];
+		}
+	}
+	//如果还有剩余，则直接放入到辅助数组中
+	while (i <= r1)
+	{
+		temp[k++] = nums[i++];
+	}
+	while (j <= r2)
+	{
+		temp[k++] = nums[j++];
+	}
+	//更新原始数组元素
+	for (int i = 0; i < n; i++)
+	{
+		nums[l1 + i] = temp[i];
+	}
+}
+//二路合并的递归实现
+void MergerSort(vector<int>& nums, int start, int end)
+{
+	if (start < end)
+	{
+		int mid = (start + end) >> 1;//分割序列
+		MergerSort(nums, start, mid);//对元素左半部分进行归并排序
+		MergerSort(nums, mid + 1, end);//对元素有右半部分进行排序
+		merge(nums, start, mid, mid + 1, end);//合并已有元素的两个序列
+
+	}
+}
+//递归排序的迭代实现
+void MergerSort1(vector<int>& nums, int start, int end)
+{
+	int n = nums.size();
+	if (start < end)
+	{
+        //step 为组内的元素个数，
+		for (int step = 2; step / 2 < n; step *= 2)
+		{//每step 个元素一组，组内前step/2和后step/2个元素进行合并
+			for (int i = 0; i < n; i += step)
+			{
+				int mid = i + step / 2 - 1;
+				if (mid + 1 < n)
+				{
+					merge(nums, i,mid, mid + 1, min(i + step - 1, n - 1));
+				}
+			}
+		}
+	}
+}\
+
+
+int main()
+{
+	vector<int >nums{ 1, 4, 3, 6, 2, 8, 5 };
+	MergerSort(nums, 0, 6);
+	//MergeSort1(nums, 0,6);
+	for (auto x : nums)
+		cout << x << " ";
+	cout << endl;
+	system("pause");
+	return EXIT_SUCCESS;
+}
