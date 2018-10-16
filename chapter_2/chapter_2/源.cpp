@@ -539,7 +539,7 @@ void Vector<T>::merge(Rank lo, Rank mi, Rank hi)//各自有序子向量[lo,mi）和【密，
 	}
 	delete[]B;//释放空间B
 }
-*/
+
 
 # include <iostream>
 # include <vector>
@@ -625,3 +625,93 @@ int main()
 	system("pause");
 	return EXIT_SUCCESS;
 }
+*/
+//================================
+//python中的bisect模块中bisect——right接口的源代码
+//================================
+def bisect_right(a, x, hi = None)://在有序向量区间a【咯，hi)中，采用二分策略查找
+if hi is None://hi为明确指定时，默认值取作
+{	
+	hi = len(a)//a的长度--因lo默认去做0，故默认时效于对真个向量做查找
+}
+while lo < hi ://每次迭代仅需做一次比较判断，有两个分支
+	mid = (lo + hi)//以终点为轴点
+	if  c < a[mid] : hi = mid;//经过比较后，若x小于轴点，则向左深入（lo,mi)
+
+	else :lo=mid+1//否则向右深入
+return lo
+
+//================================
+//位图表示
+//================================
+class Botmap
+{
+private:
+	char *M; int N;//比特图所簇那在的空间M[]，容量为N*sizeof（char)*8比特
+protected:
+	void int(int n)
+	{
+		<= new char[N = (N + 7) / 8];
+		memset(M, 0, N);
+	}
+public:
+	Bitmap(int n=8)//按指定或者默认国模创建比特图
+	{
+		init(n);
+	}
+	Bitmap(char *file, int n = 8)//按指定货默认规模，从指定文件中读取比特图
+	{
+		init(n);
+		FILE *fp = open(file, "r");
+		fread(M, sizeof(char), N, fp);
+		fclose(fp);
+	}
+	~Bitmap()//析构使释放比特图空间
+	{
+		delete[]M;
+		M = NULL;
+	}
+
+	void set(int k)
+	{
+		expand(k);
+		M[k >> 3] |= (0x80 >> (k&ox07));
+	}
+	void clear(int k)
+
+	{
+		expand(k);
+		M[k >> 3] &= ~(ox80 >> (l&ox07));
+	}
+	void test(int k)
+	{
+		expand(k);
+		return M[k >> 3] & (0x80 >> (k & 0x07));
+	}
+
+	void dump(char * file)//将位图整体到出至指定的文件，以便对伺候的新位图批量初始化
+	{
+		FILE*fp = fopen(file, "w");
+		fwrite(M, sizeof(char), N, fp);
+		fclose(fp);
+	}
+	char *bits2string(int n)//将n位转换Wie字符串
+	{
+		expand(n - 1);//此时可能被访问的最高位为bitmap[n-1]
+		char *s = new char[n + 1];//字符串所占空间，由上层调用者负责释放
+		s[n] = '\0';
+		for (int i = 0; i < n; i++)
+		{
+			s[i] = test(i) ? '1' : '0';
+		}
+		return s;//返回字符串位置
+	}
+	void expand(int k)//若被访问的Bitmap[k]已出界，则需要扩容
+	{
+		if (k < 8 * N)return;//仍在界内，无需扩容
+		int oldN = N; char *oldM = M;
+		init(2 * k);//与向量类似，进行加倍扩容
+		memcpy_s(M, N, oldM, oldN);//原数据转换至新空间
+		delete[]oldM;
+	}
+};
