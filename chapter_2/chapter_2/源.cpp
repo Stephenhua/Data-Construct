@@ -625,7 +625,7 @@ int main()
 	system("pause");
 	return EXIT_SUCCESS;
 }
-*/
+
 //================================
 //python中的bisect模块中bisect——right接口的源代码
 //================================
@@ -715,3 +715,165 @@ public:
 		delete[]oldM;
 	}
 };
+
+# include <iostream>
+# include <vector>
+using namespace std;
+int main()
+{
+	vector<int > k;
+	for (int j = 0; j< 12; j++)
+	{
+		k.push_back(j);
+	}
+	for (int j = 0; j < 12; j++)
+	{
+		cout << k[j] << " ";
+	}
+	system("pause");
+	return 0;
+}
+
+
+# include <iostream>//关于int指针的向量
+# include <vector>
+using  namespace std;
+int main()
+{
+	vector<int*> k;
+	int *p= new int[15];
+	for (int j = 0; j < 15; j++)
+	{
+		p[j] = j;
+		k.push_back(&p[j]);
+	}
+	for (int i = 0; i < 15; i++)
+	{
+		cout << *k[i] << " ";
+	}
+	delete[]p;
+	system("pause");
+	return 0;
+
+}
+
+
+# include <iostream>//关于int指针的向量
+# include <vector>
+using  namespace std;
+int main()
+{
+	vector<int>*k;//vector 向量指针
+	k = new vector<int>[5];//相当于 int *p=new int[5];
+	for (int i = 0; i < 5; i++)
+	{
+
+		for (int j = 0; j < 10; j++)
+		{
+			k[i].push_back(j);//给向量指针中追加值，这样可以组成数组
+		}
+	}
+
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < k[i].size(); j++)
+		{
+			cout << k[i][j] << " ";
+		}
+		cout << endl;
+	}
+	delete[]k;
+	system("pause");
+	return 0;
+}
+
+
+# include <iostream>//int指针的向量指针
+# include <vector>
+using namespace std;
+int main()
+{
+	vector<int*> *k;
+	k = new vector<int*>[5];
+	int *p = new int[10];
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < 10; j++)
+		{
+			p[j] = j;
+			k[i].push_back(&p[j]);
+		}
+	}
+
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < 10; j++)
+		{
+			cout << *k[i][j] << " ";
+		}
+		cout << endl;
+	}
+	delete[]p;
+	delete[]k;
+	system("pause");
+	return 0;
+}
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#define BITSPERWORD 32
+#define SHIFT 5
+#define MASK 0x1F
+#define N 1000000
+
+int a[1 + N / BITSPERWORD];
+
+//设置0或1
+void set(int i)
+{
+	a[i >> SHIFT] |= (1 << (i & MASK));
+}
+
+//清0
+void clr(int i)
+{
+	a[i >> SHIFT] &= ~(1 << (i & MASK));
+}
+
+//查询0或1
+int test(int i)
+{
+	return (a[i >> SHIFT] & (1 << (i & MASK)));
+}
+
+int main()
+{
+	int i;
+	int r;
+	srand((unsigned)time(NULL));
+
+	for (i = 0; i<N; i++)
+	{
+		clr(i);
+	}
+
+	for (i = 0; i<N; i++)
+	{
+		r = rand() % N;
+		set(r);
+	}
+
+	for (i = 1; i <= N; i++)
+	{
+		if (test(i))
+		{
+			printf("%d ", i);
+		}
+	}
+	printf("\n");
+	printf("running time:%f\n", (double)clock() / CLOCKS_PER_SEC);
+	system("pause");
+	return 0;
+}
