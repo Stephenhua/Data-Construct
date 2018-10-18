@@ -818,7 +818,6 @@ int main()
 	system("pause");
 	return 0;
 }
-*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -876,4 +875,51 @@ int main()
 	printf("running time:%f\n", (double)clock() / CLOCKS_PER_SEC);
 	system("pause");
 	return 0;
+}
+*/
+# include <iostream>
+#include <vector>
+using namespace std;
+
+class bitmap
+{
+private :
+	vector<size_t>_a;
+public:
+	bitmap(size_t size = 1024)//为位图设置空间
+	{
+		_a.resize((size >> 5) + 1);//等价于size/32+1，单使用移位算法效率较高
+	}
+	void set(size_t num)//对现有数据所对应位置设设为1
+	{
+		size_t index = num >> 5;
+		size_t pos = num % 32;
+		_a[index] |= (1 << pos);
+	}
+	void reset(size_t num)
+	{
+		size_t index = num >> 5;
+		size_t pos = num % 32;
+		_a[index] &= (~(1 << pos));
+	}
+	bool test(size_t num)//判断数据是否存在
+	{
+		size_t index = num >> 5;
+		size_t pos = num % 32;
+		return _a[index] & (1 << pos);
+	}
+};
+
+int main()
+{
+	bitmap A(2048);//测试
+	int N[] = { 0, 3, 8, 9, 1, 62, 365, 56,488, 532, 674 };
+	for (int i = 0; i < sizeof(N) / sizeof(N[0]); ++i)
+	{
+		A.set(N[i]);
+	}
+	cout << A.test(488) << " " << A.test(10) << endl;
+	system("pause");
+	return 0;
+
 }
