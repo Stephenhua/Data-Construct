@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "atio", "atio\atio.vcxproj", "{5E0B790C-5AD6-4A0A-B7CF-689E56A5A594}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E0B790C-5AD6-4A0A-B7CF-689E56A5A594}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5E0B790C-5AD6-4A0A-B7CF-689E56A5A594}.Debug|Win32.Build.0 = Debug|Win32
+		{5E0B790C-5AD6-4A0A-B7CF-689E56A5A594}.Release|Win32.ActiveCfg = Release|Win32
+		{5E0B790C-5AD6-4A0A-B7CF-689E56A5A594}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -18,5 +18,8 @@
     <ClCompile Include="map_1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="map_2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
