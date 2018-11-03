@@ -1,0 +1,13 @@
+﻿生成启动时间为 2018/11/3 9:11:34。
+     1>项目“E:\C++code\C++Data_Struct\function_equal\function_equal\function_equal.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\vs2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt equal.cpp
+         equal.cpp
+       Link:
+         C:\vs2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\C++code\C++Data_Struct\function_equal\Debug\function_equal.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\C++code\C++Data_Struct\function_equal\Debug\function_equal.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\C++code\C++Data_Struct\function_equal\Debug\function_equal.lib" /MACHINE:X86 Debug\equal.obj
+         function_equal.vcxproj -> E:\C++code\C++Data_Struct\function_equal\Debug\function_equal.exe
+     1>已完成生成项目“E:\C++code\C++Data_Struct\function_equal\function_equal\function_equal.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:02.01

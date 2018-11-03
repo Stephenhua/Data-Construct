@@ -38,12 +38,39 @@ int isPalindrone1(int x)
 
 
 }
+
+static auto x = [](){
+	std::ios::sync_with_stdio(false);
+	std::cin.tie(NULL);
+	return 0;
+}();
+
+bool isPalidrome2(int x)
+{
+	int reverNum = 0;
+	if (x < 0 || (x % 10 == 0 && x != 0))
+	{
+		return false;
+	}
+	if (x < 10)
+	{
+		return true;
+	}
+	while (x > reverNum)
+	{
+		reverNum = reverNum * 10 + x % 10;
+		x /= 10;
+	}
+	return x == reverNum || x == reverNum / 10;
+}
+
 int main()
 {
 	int b;
 	cin >> b;
 	cout << isPalindrone(b) << endl;
 	cout << isPalindrone1(b) << endl;
+	cout << isPalidrome2(b) << endl;
 	system("pause");
 	return (0);
 }

@@ -40,10 +40,10 @@ int reverse1(int x) {//进行数字反转可以实现方法一
 
 int reverse2(int x)
 {
-	bool a = (x > 0);
-	long x_long = (a) ? x : -x;
+	bool a = (x > 0);//判断x的正负
+	long x_long = (a) ? x : -x;//取绝对值
 	long ans = 0;
-	while (x_long > 0)
+	while (x_long > 0)//利用整除取余和整除取整，则进行取倒数
 	{
 		if (ans > INT_MAX / 10 || ans < INT_MIN / 10)
 		{
@@ -52,7 +52,7 @@ int reverse2(int x)
 		ans = ans * 10 + x_long % 10;
 		x_long = x_long / 10;
 	}
-	return (a) ? ans : -ans;
+	return (a) ? ans : -ans;//返回值
 
 }
 
