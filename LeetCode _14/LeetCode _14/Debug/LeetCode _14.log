@@ -1,0 +1,19 @@
+﻿生成启动时间为 2018/11/4 10:39:06。
+     1>项目“E:\C++code\C++Data_Struct\LeetCode _14\LeetCode _14\LeetCode _14.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\vs2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "源.cpp"
+         源.cpp
+     1>e:\c++code\c++data_struct\leetcode _14\leetcode _14\源.cpp(15): warning C4018: “<”: 有符号/无符号不匹配
+     1>e:\c++code\c++data_struct\leetcode _14\leetcode _14\源.cpp(18): warning C4018: “<”: 有符号/无符号不匹配
+     1>e:\c++code\c++data_struct\leetcode _14\leetcode _14\源.cpp(20): warning C4018: “>=”: 有符号/无符号不匹配
+     1>e:\c++code\c++data_struct\leetcode _14\leetcode _14\源.cpp(34): warning C4018: “<”: 有符号/无符号不匹配
+     1>e:\c++code\c++data_struct\leetcode _14\leetcode _14\源.cpp(36): warning C4018: “<”: 有符号/无符号不匹配
+     1>e:\c++code\c++data_struct\leetcode _14\leetcode _14\源.cpp(38): warning C4018: “>=”: 有符号/无符号不匹配
+       Link:
+         C:\vs2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\C++code\C++Data_Struct\LeetCode _14\Debug\LeetCode _14.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\C++code\C++Data_Struct\LeetCode _14\Debug\LeetCode _14.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\C++code\C++Data_Struct\LeetCode _14\Debug\LeetCode _14.lib" /MACHINE:X86 "Debug\源.obj"
+         LeetCode _14.vcxproj -> E:\C++code\C++Data_Struct\LeetCode _14\Debug\LeetCode _14.exe
+     1>已完成生成项目“E:\C++code\C++Data_Struct\LeetCode _14\LeetCode _14\LeetCode _14.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.86
