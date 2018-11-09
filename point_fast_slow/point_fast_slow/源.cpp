@@ -4,6 +4,7 @@
 # include <time.h>
 
 using namespace std;
+/*
 typedef struct node
 {
 	int num;
@@ -182,4 +183,72 @@ void Is_a2List_Intersect(LinkList L1, Linklsit L2)
 		printf("相交的第一个节点是: %d\n", p->data);
 	}
 
+}
+*/
+
+struct ListNode
+{
+	ListNode(int _v = 0) :value(_v), next(NULL){}//构造函数初始化列表
+	int value;
+	ListNode* next;
+	void add(ListNode* _1)
+	{
+		if (next == NULL)
+		{
+			next = _1;
+		}
+		else
+		{
+			next->add(_1);
+		}
+	}
+
+};
+ListNode* findNode(ListNode* root, int k)
+{
+	int len = 0;
+	ListNode* p = root;
+	while (p != NULL)
+	{
+		len++;
+		p = p->next;
+	}
+	if (k > len) return NULL;
+	int i = 1;
+	p = root;
+	while (i < len - k + 1)
+	{
+		p = p->next;
+		i++;
+	}
+	return p;
+}
+int main()
+{
+	ListNode *root = new ListNode(0);
+	ListNode l1(1);
+	ListNode l2(2);
+	ListNode l3(3);
+	ListNode l4(4);
+	ListNode l5(5);
+	ListNode l6(6);
+	root->add(&l6);
+	root->add(&l5);
+	root->add(&l4);
+	root->add(&l3);
+	root->add(&l2);
+	root->add(&l1);
+
+	cout << "List 节点为:";
+	ListNode *p = root;
+	while (p != NULL)
+	{
+		cout << p->value << ",";
+		p = p->next;
+	}
+	cout << endl;
+	p = findNode(root, 4);
+	cout << "List 倒数第4个节点是： " << p->value << endl;
+	system("pause");
+	return EXIT_SUCCESS;
 }
