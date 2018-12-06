@@ -1,0 +1,22 @@
+﻿生成启动时间为 2018/12/3 8:50:35。
+     1>项目“E:\C++code\C++Data_Struct\LeetCode_Merge_two_sorted_lists\LeetCode_Merge_two_sorted_lists\LeetCode_Merge_two_sorted_lists.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\vs2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "源.cpp"
+         源.cpp
+     1>e:\c++code\c++data_struct\leetcode_merge_two_sorted_lists\leetcode_merge_two_sorted_lists\源.cpp(48): error C2653: “list_t”: 不是类或命名空间名称
+     1>e:\c++code\c++data_struct\leetcode_merge_two_sorted_lists\leetcode_merge_two_sorted_lists\源.cpp(48): error C2133: “iter”: 未知的大小
+     1>e:\c++code\c++data_struct\leetcode_merge_two_sorted_lists\leetcode_merge_two_sorted_lists\源.cpp(48): error C2512: “std::iterator”: 没有合适的默认构造函数可用
+     1>e:\c++code\c++data_struct\leetcode_merge_two_sorted_lists\leetcode_merge_two_sorted_lists\源.cpp(51): error C2065: “ListNoe”: 未声明的标识符
+     1>e:\c++code\c++data_struct\leetcode_merge_two_sorted_lists\leetcode_merge_two_sorted_lists\源.cpp(51): error C2065: “dummy”: 未声明的标识符
+     1>e:\c++code\c++data_struct\leetcode_merge_two_sorted_lists\leetcode_merge_two_sorted_lists\源.cpp(51): error C2061: 语法错误: 标识符“ListNode”
+     1>e:\c++code\c++data_struct\leetcode_merge_two_sorted_lists\leetcode_merge_two_sorted_lists\源.cpp(52): error C2676: 二进制“&&”:“std::list<int,std::allocator<_Ty>>”不定义该运算符或到预定义运算符可接收的类型的转换
+                 with
+                 [
+                     _Ty=int
+                 ]
+     1>e:\c++code\c++data_struct\leetcode_merge_two_sorted_lists\leetcode_merge_two_sorted_lists\源.cpp(52): fatal error C1903: 无法从以前的错误中恢复；正在停止编译
+     1>已完成生成项目“E:\C++code\C++Data_Struct\LeetCode_Merge_two_sorted_lists\LeetCode_Merge_two_sorted_lists\LeetCode_Merge_two_sorted_lists.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:02.18
