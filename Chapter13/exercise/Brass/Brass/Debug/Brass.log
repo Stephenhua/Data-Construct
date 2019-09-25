@@ -1,0 +1,14 @@
+﻿生成启动时间为 2019/5/4 19:59:50。
+     1>项目“E:\C++code\C++primer questions\Chapter13\exercise\Brass\Brass\Brass.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\vs2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+       Link:
+         C:\vs2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\C++code\C++primer questions\Chapter13\exercise\Brass\Debug\Brass.exe" /INCREMENTAL /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\C++code\C++primer questions\Chapter13\exercise\Brass\Debug\Brass.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\C++code\C++primer questions\Chapter13\exercise\Brass\Debug\Brass.lib" /MACHINE:X86 Debug\brass.obj
+         Debug\main.obj
+         Brass.vcxproj -> E:\C++code\C++primer questions\Chapter13\exercise\Brass\Debug\Brass.exe
+     1>已完成生成项目“E:\C++code\C++primer questions\Chapter13\exercise\Brass\Brass\Brass.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:02.47
